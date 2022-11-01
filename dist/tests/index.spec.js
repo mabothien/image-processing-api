@@ -13,18 +13,6 @@ describe('SERVER RUNNING', () => {
         server.close();
     });
     describe('GET', () => {
-        const data = {
-            status: 0
-        };
-        // beforeAll((done) => {
-        //   // axios.get(
-        //   //   'http://localhost:8000/api/images?filename=fjord&width=500&height=200',
-        //   //   (_, response: Response) => {
-        //   //     data.status = response.statusCode;
-        //   //     done();
-        //   //   }
-        //   // );
-        // });
         it('Status 200', (done) => {
             axios_1.default.get("http://localhost:8000/api/images?filename=fjord&width=500&height=200").then((response) => {
                 expect(response.status).toBe(200);

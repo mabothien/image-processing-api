@@ -9,15 +9,15 @@ export const resize = async (
 ): Promise<Sharp | undefined> => {
   const getFile = `./images/${fileSource}.jpg`;
   try {
-    const transform = await sharp(getFile);
+    const res = await sharp(getFile);
     if (width && height && parseInt(width) > 0 && parseInt(height) > 0) {
       const resizeParams = {
         width: parseInt(width),
         height: parseInt(height)
       };
-      transform.resize(resizeParams);
+      res.resize(resizeParams);
     }
-    return transform;
+    return res;
   } catch (e) {
     console.error(e);
   }

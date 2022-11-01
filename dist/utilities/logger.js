@@ -18,13 +18,13 @@ const logger = (req, res, next) => __awaiter(void 0, void 0, void 0, function* (
     const filename = req.query.filename;
     const width = req.query.width;
     const height = req.query.height;
-    const originalPath = `${filename}-${width}-${height}`;
-    const isExistThumbs = yield (0, handleFile_1.isFileExist)(originalPath, "./thumbs");
+    const resizedImgPath = `${filename}-${width}-${height}`;
+    const isExistThumbs = yield (0, handleFile_1.isFileExist)(resizedImgPath, "./thumbs");
     if (isExistThumbs) {
         const options = {
             root: path_1.default.join('thumbs')
         };
-        res.sendFile(`${filename}-${width}-${height}.jpg`, options, (err) => {
+        res.sendFile(`${resizedImgPath}.jpg`, options, (err) => {
             if (err) {
                 next(err);
             }

@@ -18,15 +18,15 @@ const fs_1 = require("fs");
 const resize = (fileSource, width, height) => __awaiter(void 0, void 0, void 0, function* () {
     const getFile = `./images/${fileSource}.jpg`;
     try {
-        const transform = yield (0, sharp_1.default)(getFile);
+        const res = yield (0, sharp_1.default)(getFile);
         if (width && height && parseInt(width) > 0 && parseInt(height) > 0) {
             const resizeParams = {
                 width: parseInt(width),
                 height: parseInt(height)
             };
-            transform.resize(resizeParams);
+            res.resize(resizeParams);
         }
-        return transform;
+        return res;
     }
     catch (e) {
         console.error(e);

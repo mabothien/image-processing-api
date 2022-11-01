@@ -9,13 +9,13 @@ const logger = async (
   const filename = req.query.filename as string;
   const width = req.query.width as string;
   const height = req.query.height as string;
-  const originalPath = `${filename}-${width}-${height}`;
-  const isExistThumbs = await isFileExist(originalPath, "./thumbs");
+  const resizedImgPath = `${filename}-${width}-${height}`;
+  const isExistThumbs = await isFileExist(resizedImgPath, "./thumbs");
   if (isExistThumbs) {
     const options = {
       root: path.join('thumbs')
     };
-    res.sendFile(`${filename}-${width}-${height}.jpg`, options, (err) => {
+    res.sendFile(`${resizedImgPath}.jpg`, options, (err) => {
       if (err) {
         next(err);
       } else {
