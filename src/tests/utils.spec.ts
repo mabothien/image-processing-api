@@ -4,12 +4,12 @@ import { isFileExist } from '../utilities/handleFile';
 
 describe('Exist file', () => {
   it('The file does not exists in the images folder', async () => {
-    const result = await isFileExist('noexistfile',"./images");
+    const result = await isFileExist('noexistfile', './images');
     expect(result).toBe(false);
   });
 
   it('The file exists in the images folder', async () => {
-    const result = await isFileExist('fjord',"./images");
+    const result = await isFileExist('fjord', './images');
     expect(result).toBe(true);
   });
 });

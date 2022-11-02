@@ -1,19 +1,19 @@
-import { Response, Request, NextFunction } from 'express'
+import { Response, Request, NextFunction } from 'express';
 import { isFileExist } from './handleFile';
 import path from 'path';
 const logger = async (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ): Promise<void> => {
   const filename = req.query.filename as string;
   const width = req.query.width as string;
   const height = req.query.height as string;
   const resizedImgPath = `${filename}-${width}-${height}`;
-  const isExistThumbs = await isFileExist(resizedImgPath, "./thumbs");
+  const isExistThumbs = await isFileExist(resizedImgPath, './thumbs');
   if (isExistThumbs) {
     const options = {
-      root: path.join('thumbs')
+      root: path.join('thumbs'),
     };
     res.sendFile(`${resizedImgPath}.jpg`, options, (err) => {
       if (err) {
@@ -23,7 +23,7 @@ const logger = async (
       }
     });
   } else {
-    const isExistImages = await isFileExist(filename,"./images");
+    const isExistImages = await isFileExist(filename, './images');
     if (!isExistImages) {
       res.send('Filename is not exist');
       return;
@@ -40,4 +40,4 @@ const logger = async (
     next();
   }
 };
-export default logger
+export default logger;
